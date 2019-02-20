@@ -3,7 +3,6 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions; 
-use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
 {
@@ -12,7 +11,7 @@ class ExampleTest extends TestCase
     public function setUp() 
     {
         parent::setUp();
-        $this->app = $this->app;
+        $this->app = app();
     }
 
     /**
@@ -22,8 +21,9 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $app = $this->app();
-        // $this->visit('/')
-            //  ->see('Laravel 5');
+        $app = $this->app;
+        $this->assertNotEmpty($app);
+        $this->visit('/')
+             ->see('Laravel 5');
     }
 }
